@@ -1,3 +1,4 @@
+import { Client } from "src/entities/Client";
 import { DataSource } from "typeorm";
 
 export const dbConnect = async () => {
@@ -9,6 +10,8 @@ export const dbConnect = async () => {
       username: "postgres",
       password: "root",
       database: "typeorm",
+      entities: [Client],
+      synchronize: true,
     });
     await connection.initialize();
     console.log("Database connected successfully.");
