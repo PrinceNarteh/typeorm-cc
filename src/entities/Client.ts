@@ -1,12 +1,7 @@
-import {
-  BaseEntity,
-  Column,
-  Entity,
-  PrimaryGeneratedColumn,
-  CreateDateColumn,
-  UpdateDateColumn,
-} from "typeorm";
+import { Column, Entity, ManyToMany, OneToMany } from "typeorm";
+import { Banker } from "./Banker";
 import { Person } from "./Person";
+import { Transaction } from "./Transaction";
 
 @Entity("clients")
 export class Client extends Person {
@@ -27,4 +22,10 @@ export class Client extends Person {
 
   @Column("simple-array", { name: "family_members", default: [] })
   familyMembers: string[];
+
+  @OneToMany(() => Transaction, (transaction) => transaction.client)
+  transactions: Transaction[];
+
+  @ManyToMany(() => Banker)
+  bankers: Banker[];
 }
