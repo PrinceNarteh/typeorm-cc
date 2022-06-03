@@ -1,5 +1,6 @@
-import { Client } from "src/entities/Client";
+import { Client } from "../entities/Client";
 import { DataSource } from "typeorm";
+import { Banker } from "../entities/Banker";
 
 export const dbConnect = async () => {
   try {
@@ -10,7 +11,7 @@ export const dbConnect = async () => {
       username: "postgres",
       password: "root",
       database: "typeorm",
-      entities: [Client],
+      entities: [Banker, Client],
       synchronize: true,
     });
     await connection.initialize();
