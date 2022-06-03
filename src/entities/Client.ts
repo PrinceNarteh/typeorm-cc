@@ -14,6 +14,13 @@ export class Client extends Person {
   })
   isActive: boolean;
 
+  @Column({
+    name: "account_number",
+    unique: true,
+    length: 12,
+  })
+  accountNumber: string;
+
   @Column("simple-json", { name: "additional_info", nullable: true })
   additionalInfo: {
     age: number;

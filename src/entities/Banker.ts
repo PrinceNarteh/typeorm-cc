@@ -5,10 +5,11 @@ import { Person } from "./Person";
 @Entity("bankers")
 export class Banker extends Person {
   @Column({
+    name: "employee_number",
     length: 10,
     unique: true,
   })
-  employee_number: string;
+  staffNumber: string;
 
   @ManyToMany(() => Client)
   @JoinTable({

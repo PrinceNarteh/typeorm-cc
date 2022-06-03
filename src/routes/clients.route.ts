@@ -7,13 +7,13 @@ import {
   updateClient,
 } from "../controllers/client.controller";
 
-const clientRouter = Router();
+const clientRoutes = Router();
 
-clientRouter.route("/").get(getAllClients).post(createClient);
-clientRouter
+clientRoutes.route("/").get(getAllClients).post(createClient);
+clientRoutes
   .route("/clientId")
   .get(getClient)
   .put(updateClient)
   .delete(deleteClient);
 
-export default clientRouter;
+export default clientRoutes;

@@ -1,6 +1,7 @@
 import express from "express";
 import { dbConnect } from "./libs/dbConnect";
-import clientRouter from "./routes/clients.router";
+import bankerRoutes from "./routes/bankers.route";
+import clientRoutes from "./routes/clients.route";
 
 const main = async () => {
   // connecting to database
@@ -12,7 +13,9 @@ const main = async () => {
   // adding middleware
   app.use(express.json());
 
-  app.use("/clients", clientRouter);
+  // routes
+  app.use("/api/clients", clientRoutes);
+  app.use("/api/bankers", bankerRoutes);
 
   app.listen(4000, async () => {
     console.log("Server listening on port 4000");
