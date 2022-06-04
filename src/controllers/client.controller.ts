@@ -1,19 +1,29 @@
 import { Request, Response } from "express";
 import { Client } from "../entities/Client";
 
-export const getClient = async (req: Request, res: Response) => {};
-export const getAllClients = async (req: Request, res: Response) => {};
+export const getClient = async (req: Request, res: Response) => {
+  const { clientId } = req.params;
+  const client = await Client.findOne({ where: { id: parseInt(clientId) } });
+  return res.status(200).json(client);
+};
+
+export const getAllClients = async (req: Request, res: Response) => {
+  const clients = await Client.find();
+  return res.status(200).json(clients);
+};
+
 export const createClient = async (req: Request, res: Response) => {
-  const { firstName, lastName, email, cardNumber, balance } = req.body;
+  const { firstName, lastName, email, accountNumber, balance } = req.body;
   const client = Client.create({
     firstName,
     lastName,
     email,
-    cardNumber,
+    accountNumber,
     balance,
   });
   await client.save();
   return res.status(201).json(client);
 };
+
 export const updateClient = async (req: Request, res: Response) => {};
 export const deleteClient = async (req: Request, res: Response) => {};

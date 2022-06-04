@@ -11,7 +11,7 @@ const clientRoutes = Router();
 
 clientRoutes.route("/").get(getAllClients).post(createClient);
 clientRoutes
-  .route("/clientId")
+  .route("/:clientId")
   .get(getClient)
   .put(updateClient)
   .delete(deleteClient);
