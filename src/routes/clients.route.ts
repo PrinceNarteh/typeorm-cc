@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   createClient,
+  createTransaction,
   deleteClient,
   getAllClients,
   getClient,
@@ -10,6 +11,7 @@ import {
 const clientRoutes = Router();
 
 clientRoutes.route("/").get(getAllClients).post(createClient);
+clientRoutes.post("/:clientId/transaction", createTransaction);
 clientRoutes
   .route("/:clientId")
   .get(getClient)
