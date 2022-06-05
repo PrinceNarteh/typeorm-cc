@@ -5,8 +5,8 @@ import { Person } from "./Person";
 @Entity("bankers")
 export class Banker extends Person {
   @Column({
-    name: "employee_number",
-    length: 10,
+    name: "staff_number",
+    length: 12,
     unique: true,
   })
   staffNumber: string;

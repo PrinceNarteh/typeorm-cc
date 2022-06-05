@@ -20,7 +20,17 @@ export const getAllBankers = async (req: Request, res: Response) => {
   res.status(200).json(bankers);
 };
 
-export const createBanker = async (req: Request, res: Response) => {};
+export const createBanker = async (req: Request, res: Response) => {
+  const { firstName, lastName, email, staffNumber } = req.body;
+  const banker = Banker.create({
+    firstName,
+    lastName,
+    email,
+    staffNumber,
+  });
+  await banker.save();
+  return res.status(201).json(banker);
+};
 
 export const updateBanker = async (req: Request, res: Response) => {};
 
