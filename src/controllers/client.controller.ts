@@ -52,11 +52,9 @@ export const createTransaction = async (req: Request, res: Response) => {
   await transaction.save();
 
   if (type === TransactionType.DEPOSIT) {
-    console.log(typeof client.balance);
-    console.log(typeof amount);
-    client.balance = client.balance + amount;
+    client.balance = Number(amount) + Number(client.balance);
   } else if (type === TransactionType.WITHDRAW) {
-    client.balance -= client.balance - amount;
+    client.balance = Number(client.balance) - Number(amount);
   }
 
   await client.save();

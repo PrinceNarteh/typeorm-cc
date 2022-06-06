@@ -5,7 +5,7 @@ import { Transaction } from "./Transaction";
 
 @Entity("clients")
 export class Client extends Person {
-  @Column("numeric")
+  @Column({ type: "numeric", precision: 10, scale: 2 })
   balance: number;
 
   @Column({
