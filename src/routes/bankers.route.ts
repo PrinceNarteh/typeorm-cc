@@ -5,6 +5,7 @@ import {
   getBanker,
   updateBanker,
   deleteBanker,
+  connectBankerToClient,
 } from "../controllers/banker.controller";
 
 const bankerRoutes = Router();
@@ -15,5 +16,6 @@ bankerRoutes
   .get(getBanker)
   .put(updateBanker)
   .delete(deleteBanker);
+bankerRoutes.put("/:bankerId/client/:clientId", connectBankerToClient);
 
 export default bankerRoutes;
